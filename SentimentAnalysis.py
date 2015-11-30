@@ -49,7 +49,9 @@ test_tweets = [
     (['your', 'song', 'annoying'], 'negative')]
 
 
-word_features = get_word_features(get_words_in_tweets(tweets))
+words_in_tweets = get_words_in_tweets(tweets)
+
+word_features = get_word_features(words_in_tweets)
 
 training_set = nltk.classify.apply_features(extract_features, tweets)
 
