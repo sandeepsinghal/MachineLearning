@@ -13,6 +13,7 @@ def get_word_features(wordlist):
     word_features = wordlist.keys()
     return word_features
 
+# For each tweet, check if the word is contained in feature list or not
 def extract_features(document):
     document_words = set(document)
     features = {}
@@ -48,16 +49,20 @@ test_tweets = [
     (['house', 'not', 'great'], 'negative'),
     (['your', 'song', 'annoying'], 'negative')]
 
-
+#array of all words in the tweet, sr
 words_in_tweets = get_words_in_tweets(tweets)
 
+# Distinct words with atleast 3 characters sorted by number of occurrences (frequency distribution of each word)
 word_features = get_word_features(words_in_tweets)
 
 training_set = nltk.classify.apply_features(extract_features, tweets)
 
+print training_set
+
 classifier = nltk.NaiveBayesClassifier.train(training_set)
 
-print classifier.show_most_informative_features(32)
+#print classifier.show_most_informative_features(32)
+
 
 tweet = 'Larry is my friend'
 
@@ -67,8 +72,3 @@ print classifier.classify(extract_features(tweet.split()))
 tweet = 'Your song is annoying'
 
 print classifier.classify(extract_features(tweet.split()))
-
-
-
-
-
