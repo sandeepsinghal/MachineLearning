@@ -55,6 +55,7 @@ words_in_tweets = get_words_in_tweets(tweets)
 # Distinct words with atleast 3 characters sorted by number of occurrences (frequency distribution of each word)
 word_features = get_word_features(words_in_tweets)
 
+# tweets has the important words in the tweet along with the sentiment
 training_set = nltk.classify.apply_features(extract_features, tweets)
 
 print training_set
